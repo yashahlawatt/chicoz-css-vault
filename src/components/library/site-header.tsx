@@ -38,13 +38,13 @@ export function SiteHeader({ query, onQueryChange }: SiteHeaderProps) {
             window.scrollTo({ top: 0, behavior: 'smooth' });
           }}
           className="flex items-center gap-2.5"
-          aria-label="Chico CSS Vault home"
+          aria-label="CHICOZ CSS VAULT home"
         >
           <span className="flex size-9 items-center justify-center rounded-xl bg-gradient-to-br from-fuchsia-500 via-violet-500 to-amber-400 shadow-lg shadow-violet-500/25">
             <Sparkles className="size-4.5 text-white" aria-hidden="true" />
           </span>
-          <span className="text-lg font-bold tracking-tight">
-            Chico <span className="bg-gradient-to-r from-fuchsia-500 to-amber-400 bg-clip-text text-transparent">CSS</span>
+          <span className="text-lg font-bold uppercase tracking-wide">
+            CHICOZ <span className="bg-gradient-to-r from-fuchsia-500 to-amber-400 bg-clip-text text-transparent">CSS</span>
             <span className="ml-1.5 hidden text-xs font-medium uppercase tracking-widest text-muted-foreground sm:inline">
               Vault
             </span>

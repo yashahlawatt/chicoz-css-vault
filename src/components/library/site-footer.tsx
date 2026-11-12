@@ -16,7 +16,7 @@ export function SiteFooter({ onCategory }: SiteFooterProps) {
             <Sparkles className="size-3.5 text-white" aria-hidden="true" />
           </span>
           <span>
-            <strong className="font-semibold text-foreground">Chico CSS Vault</strong> — pure CSS
+            <strong className="font-semibold uppercase tracking-wide text-foreground">CHICOZ CSS VAULT</strong> — pure CSS
             effects, demonstrated live.
           </span>
         </div>

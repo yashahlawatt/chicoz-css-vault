@@ -37,7 +37,10 @@ export async function POST(request: Request) {
 
     return NextResponse.json({ ok: true, effectId, favorite });
   } catch (error) {
+    // Ephemeral hosts (e.g. Vercel serverless) have no writable SQLite file.
+    // The client keeps localStorage as the source of truth, so acknowledge the
+    // toggle politely instead of surfacing a 500.
     console.error('POST /api/favorites failed:', error);
-    return NextResponse.json({ error: 'Failed to update favorite' }, { status: 500 });
+    return NextResponse.json({ ok: true, effectId, favorite, persisted: false });
   }
 }

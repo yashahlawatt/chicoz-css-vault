@@ -103,34 +103,34 @@ export function Hero({ total, categoryCount, onBrowse, onRandom }: HeroProps) {
           initial="hidden"
           animate="show"
           custom={4}
-          className="mx-auto mt-12 grid max-w-2xl grid-cols-1 gap-3 sm:grid-cols-3"
+          className="mx-auto mt-12 grid max-w-2xl grid-cols-3 gap-2 sm:gap-3"
         >
-          <div className="rounded-2xl border border-border/60 bg-card/50 px-6 py-4 backdrop-blur">
+          <div className="rounded-2xl border border-border/60 bg-card/50 px-2 py-3 backdrop-blur sm:px-6 sm:py-4">
             <dt className="sr-only">Total effects</dt>
-            <dd className="flex items-center justify-center gap-2 text-2xl font-bold">
-              <Zap className="size-5 text-amber-400" aria-hidden="true" />
+            <dd className="flex items-center justify-center gap-1.5 text-lg font-bold sm:gap-2 sm:text-2xl">
+              <Zap className="size-4 text-amber-400 sm:size-5" aria-hidden="true" />
               {total}
             </dd>
-            <dd className="mt-0.5 text-xs uppercase tracking-widest text-muted-foreground">
+            <dd className="mt-0.5 text-[10px] uppercase leading-tight tracking-widest text-muted-foreground sm:text-xs">
               Effects &amp; counting
             </dd>
           </div>
-          <div className="rounded-2xl border border-border/60 bg-card/50 px-6 py-4 backdrop-blur">
+          <div className="rounded-2xl border border-border/60 bg-card/50 px-2 py-3 backdrop-blur sm:px-6 sm:py-4">
             <dt className="sr-only">Categories</dt>
-            <dd className="flex items-center justify-center gap-2 text-2xl font-bold">
-              <Layers className="size-5 text-fuchsia-400" aria-hidden="true" />
+            <dd className="flex items-center justify-center gap-1.5 text-lg font-bold sm:gap-2 sm:text-2xl">
+              <Layers className="size-4 text-fuchsia-400 sm:size-5" aria-hidden="true" />
               {categoryCount}
             </dd>
-            <dd className="mt-0.5 text-xs uppercase tracking-widest text-muted-foreground">
+            <dd className="mt-0.5 text-[10px] uppercase leading-tight tracking-widest text-muted-foreground sm:text-xs">
               Categories
             </dd>
           </div>
-          <div className="rounded-2xl border border-border/60 bg-card/50 px-6 py-4 backdrop-blur">
+          <div className="rounded-2xl border border-border/60 bg-card/50 px-2 py-3 backdrop-blur sm:px-6 sm:py-4">
             <dt className="sr-only">Technology</dt>
-            <dd className="flex items-center justify-center gap-2 text-2xl font-bold">
+            <dd className="flex items-center justify-center gap-1.5 text-lg font-bold sm:gap-2 sm:text-2xl">
               <span className="hero-gradient-text">100%</span>
             </dd>
-            <dd className="mt-0.5 text-xs uppercase tracking-widest text-muted-foreground">
+            <dd className="mt-0.5 text-[10px] uppercase leading-tight tracking-widest text-muted-foreground sm:text-xs">
               Pure CSS, no deps
             </dd>
           </div>

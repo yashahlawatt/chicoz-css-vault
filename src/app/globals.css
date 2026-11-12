@@ -223,3 +223,43 @@ html {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* ---------- Mobile performance & ergonomics ---------- */
+
+/* Skip layout + paint for offscreen effect cards. With 100+ live CSS
+   animations on the page this is the single biggest mobile win: phones only
+   pay for the cards near the viewport. `auto 500px` reserves a stable
+   placeholder height so the scrollbar doesn't jump. */
+.cv-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 500px;
+}
+
+/* Hide scrollbars on the mobile category rail (still scrollable by touch) */
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Demo stages: no accidental text selection or tap flash while touching
+   the live effects on a phone */
+.efx-stage {
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Hero blobs use a 90px blur that is GPU-heavy on phones — soften it */
+@media (max-width: 640px) {
+  .hero-blob {
+    filter: blur(44px);
+    opacity: 0.28;
+  }
+}
+
+/* Notch / status-bar spacing when the site is installed or in standalone view */
+.safe-top {
+  padding-top: env(safe-area-inset-top);
+}

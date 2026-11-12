@@ -153,7 +153,7 @@ export function CodeBlock({ code, language }: CodeBlockProps) {
     <div
       role="region"
       aria-label={`${language.toUpperCase()} code snippet`}
-      className="fx-scroll max-h-72 overflow-auto bg-[#0d1117] px-4 py-3 font-mono text-[12.5px] leading-relaxed"
+      className="fx-scroll max-h-72 overflow-auto bg-[#0d1117] px-3 py-3 font-mono text-[11.5px] leading-relaxed sm:px-4 sm:text-[12.5px]"
     >
       <pre className="min-w-max">{highlighted}</pre>
     </div>

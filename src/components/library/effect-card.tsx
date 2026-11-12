@@ -86,12 +86,12 @@ export function EffectCard({ effect, index, isFavorite, onToggleFavorite }: Effe
 
   return (
     <article
-      className="group relative flex animate-in flex-col overflow-hidden rounded-2xl border bg-card/70 fade-in-0 zoom-in-[0.98] backdrop-blur duration-300 transition-[border-color,box-shadow,transform] hover:-translate-y-1 hover:border-violet-500/40 hover:shadow-[0_24px_60px_-16px_rgba(139,92,246,0.28)]"
+      className="cv-auto group relative flex animate-in flex-col overflow-hidden rounded-2xl border bg-card/70 fade-in-0 zoom-in-[0.98] backdrop-blur duration-300 transition-[border-color,box-shadow,transform] hover:-translate-y-1 hover:border-violet-500/40 hover:shadow-[0_24px_60px_-16px_rgba(139,92,246,0.28)]"
       style={{ animationDelay: `${Math.min(index, 8) * 45}ms` }}
       aria-label={`${effect.name} effect`}
     >
       {/* Live demo stage */}
-      <div className="relative h-48 shrink-0 overflow-hidden border-b border-border/50 bg-[radial-gradient(ellipse_at_50%_-20%,#1c1c2a,#0b0b12_72%)]">
+      <div className="efx-stage relative h-48 shrink-0 overflow-hidden border-b border-border/50 bg-[radial-gradient(ellipse_at_50%_-20%,#1c1c2a,#0b0b12_72%)]">
         {effect.fill ? (
           <div className="absolute inset-0" dangerouslySetInnerHTML={{ __html: effect.html }} />
         ) : (
@@ -123,7 +123,7 @@ export function EffectCard({ effect, index, isFavorite, onToggleFavorite }: Effe
             aria-pressed={isFavorite}
             aria-label={isFavorite ? `Remove ${effect.name} from favorites` : `Add ${effect.name} to favorites`}
             className={cn(
-              'rounded-full p-2 transition-colors',
+              'rounded-full p-2.5 transition-colors',
               isFavorite
                 ? 'text-rose-500 hover:text-rose-400'
                 : 'text-muted-foreground hover:text-rose-400',
@@ -152,7 +152,7 @@ export function EffectCard({ effect, index, isFavorite, onToggleFavorite }: Effe
           <Button
             size="sm"
             variant="secondary"
-            className="h-8 gap-1.5 rounded-lg text-xs font-medium"
+            className="h-9 gap-1.5 rounded-lg text-xs font-medium"
             onClick={() => setOpen((v) => !v)}
             aria-expanded={open}
           >
@@ -162,7 +162,7 @@ export function EffectCard({ effect, index, isFavorite, onToggleFavorite }: Effe
           <Button
             size="sm"
             variant="outline"
-            className="h-8 gap-1.5 rounded-lg text-xs font-medium"
+            className="h-9 gap-1.5 rounded-lg text-xs font-medium"
             onClick={handleCopy}
           >
             {copied ? (

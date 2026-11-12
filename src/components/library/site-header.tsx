@@ -29,7 +29,7 @@ export function SiteHeader({ query, onQueryChange }: SiteHeaderProps) {
   const isDark = mounted ? resolvedTheme !== 'light' : true;
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border/60 bg-background/80 backdrop-blur-xl">
+    <header className="safe-top sticky top-0 z-50 border-b border-border/60 bg-background/80 backdrop-blur-xl">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6">
         <a
           href="#"

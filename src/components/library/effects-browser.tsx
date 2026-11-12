@@ -164,9 +164,9 @@ export function EffectsBrowser({ query, category, onCategoryChange }: EffectsBro
 
   return (
     <div>
-      {/* Category pills */}
+      {/* Category pills — horizontal snap rail on mobile, wrap on larger screens */}
       <div
-        className="flex flex-wrap items-center gap-2"
+        className="no-scrollbar -mx-4 flex items-center gap-2 overflow-x-auto px-4 pb-1 sm:mx-0 sm:flex-wrap sm:overflow-x-visible sm:px-0 sm:pb-0"
         role="group"
         aria-label="Filter effects by category"
       >
@@ -180,7 +180,7 @@ export function EffectsBrowser({ query, category, onCategoryChange }: EffectsBro
               onClick={() => onCategoryChange(pill.id)}
               aria-pressed={active}
               className={cn(
-                'flex items-center gap-1.5 rounded-full border px-4 py-2 text-sm font-medium transition-all duration-200',
+                'flex shrink-0 touch-manipulation items-center gap-1.5 whitespace-nowrap rounded-full border px-4 py-2.5 text-sm font-medium transition-all duration-200 sm:py-2',
                 active
                   ? 'border-transparent bg-gradient-to-r from-fuchsia-500 to-violet-500 text-white shadow-md shadow-violet-500/25'
                   : 'border-border/70 bg-transparent text-muted-foreground hover:border-violet-500/40 hover:text-foreground',

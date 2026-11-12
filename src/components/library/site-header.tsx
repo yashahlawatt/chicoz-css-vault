@@ -1,6 +1,6 @@
 'use client';
 
-import { useSyncExternalStore } from 'react';
+import { useEffect, useRef, useState, useSyncExternalStore } from 'react';
 import { Search, Sun, Moon, Sparkles, X } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { Input } from '@/components/ui/input';
@@ -27,6 +27,35 @@ export function SiteHeader({ query, onQueryChange }: SiteHeaderProps) {
   const mounted = useMounted();
 
   const isDark = mounted ? resolvedTheme !== 'light' : true;
+
+  // Mobile ergonomics: the search row collapses while the user scrolls down
+  // (reclaiming ~50px of viewport) and slides back on scroll-up or near the
+  // top. Desktop never sees this row (md:hidden), so no listener churn there.
+  const [searchCollapsed, setSearchCollapsed] = useState(false);
+  const searchFocusedRef = useRef(false);
+
+  useEffect(() => {
+    let lastY = window.scrollY;
+    let ticking = false;
+
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        const y = window.scrollY;
+        if (y < 96) {
+          setSearchCollapsed(false);
+        } else if (Math.abs(y - lastY) > 6 && !searchFocusedRef.current) {
+          setSearchCollapsed(y > lastY);
+        }
+        lastY = y;
+        ticking = false;
+      });
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   return (
     <header className="safe-top sticky top-0 z-50 border-b border-border/60 bg-background/80 backdrop-blur-xl">
@@ -99,33 +128,52 @@ export function SiteHeader({ query, onQueryChange }: SiteHeaderProps) {
         </div>
       </div>
 
-      {/* Mobile search row */}
-      <div className="px-4 pb-3 md:hidden">
-        <div className="relative">
-          <Search
-            className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground"
-            aria-hidden="true"
-          />
-          <Input
-            value={query}
-            onChange={(e) => onQueryChange(e.target.value)}
-            onKeyDown={(e) => {
-              if (e.key === 'Escape') onQueryChange('');
-            }}
-            placeholder="Search effects, tags..."
-            aria-label="Search effects"
-            className="h-10 rounded-xl bg-muted/50 pl-9 pr-9"
-          />
-          {query && (
-            <button
-              type="button"
-              onClick={() => onQueryChange('')}
-              aria-label="Clear search"
-              className="absolute right-2.5 top-1/2 -translate-y-1/2 rounded-full p-1 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
-            >
-              <X className="size-3.5" aria-hidden="true" />
-            </button>
-          )}
+      {/* Mobile search row — collapses on scroll-down to keep the sticky
+          header compact; reveal on scroll-up, near top, or while focused */}
+      <div
+        aria-hidden={searchCollapsed}
+        className={cn(
+          'overflow-hidden transition-[max-height,opacity] duration-300 ease-out md:hidden',
+          searchCollapsed
+            ? 'pointer-events-none max-h-0 opacity-0'
+            : 'max-h-24 opacity-100',
+        )}
+      >
+        <div className="px-4 pb-3">
+          <div className="relative">
+            <Search
+              className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground"
+              aria-hidden="true"
+            />
+            <Input
+              value={query}
+              onChange={(e) => onQueryChange(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === 'Escape') onQueryChange('');
+              }}
+              onFocus={() => {
+                searchFocusedRef.current = true;
+                setSearchCollapsed(false);
+              }}
+              onBlur={() => {
+                searchFocusedRef.current = false;
+              }}
+              tabIndex={searchCollapsed ? -1 : 0}
+              placeholder="Search effects, tags..."
+              aria-label="Search effects"
+              className="h-10 rounded-xl bg-muted/50 pl-9 pr-9"
+            />
+            {query && (
+              <button
+                type="button"
+                onClick={() => onQueryChange('')}
+                aria-label="Clear search"
+                className="absolute right-2.5 top-1/2 -translate-y-1/2 rounded-full p-1 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+              >
+                <X className="size-3.5" aria-hidden="true" />
+              </button>
+            )}
+          </div>
         </div>
       </div>
     </header>

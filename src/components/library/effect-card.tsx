@@ -123,7 +123,7 @@ export function EffectCard({ effect, index, isFavorite, onToggleFavorite }: Effe
             aria-pressed={isFavorite}
             aria-label={isFavorite ? `Remove ${effect.name} from favorites` : `Add ${effect.name} to favorites`}
             className={cn(
-              'rounded-full p-2.5 transition-colors',
+              'flex size-10 items-center justify-center rounded-full transition-colors',
               isFavorite
                 ? 'text-rose-500 hover:text-rose-400'
                 : 'text-muted-foreground hover:text-rose-400',

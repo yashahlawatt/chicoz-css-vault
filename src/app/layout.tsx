@@ -6,11 +6,11 @@ import { ThemeProvider } from "@/components/library/theme-provider";
 
 /**
  * Public site URL used for canonical links, OpenGraph and sitemap references.
- * Set NEXT_PUBLIC_SITE_URL to the domain you deploy on, e.g.
- *   NEXT_PUBLIC_SITE_URL=https://chicozcssvault.com   (or .in / anything you own)
- * The default below is the intended production brand domain.
+ * Set NEXT_PUBLIC_SITE_URL to the exact domain you deploy on, e.g.
+ *   NEXT_PUBLIC_SITE_URL=https://chicozcssvault.eu.org
+ * The default below is the intended production brand domain (eu.org).
  */
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://chicozcssvault.com";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://chicozcssvault.eu.org";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "CSSFX Vault — Pure CSS Effect Library",
+  title: "Chico CSS Vault — Pure CSS Effect Library",
   description:
     "Browse, preview and copy 30+ hand-crafted pure CSS effects: buttons, loaders, text animations, backgrounds, cards and utilities. Live demos with complete CSS and HTML code.",
   keywords: [
@@ -28,15 +28,15 @@ export const metadata: Metadata = {
     "CSS backgrounds",
     "copy paste CSS",
   ],
-  authors: [{ name: "CSSFX Vault" }],
+  authors: [{ name: "Chico CSS Vault" }],
   icons: {
     icon: "https://z-cdn.chatglm.cn/z-ai/static/logo.svg",
   },
   openGraph: {
-    title: "CSSFX Vault — Pure CSS Effect Library",
+    title: "Chico CSS Vault — Pure CSS Effect Library",
     description:
       "Live-demonstrated pure CSS effects with complete, copy-paste ready code.",
-    siteName: "CSSFX Vault",
+    siteName: "Chico CSS Vault",
     type: "website",
   },
 };

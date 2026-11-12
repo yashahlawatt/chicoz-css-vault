@@ -33,7 +33,7 @@ const CATEGORY_ICONS: Record<EffectCategory, typeof Layers> = {
 
 type Filter = 'all' | 'favorites' | EffectCategory;
 
-const FAVORITES_KEY = 'cssfx-favorites';
+const FAVORITES_KEY = 'chico-css-favorites';
 
 interface EffectsBrowserProps {
   query: string;
@@ -248,7 +248,7 @@ export function EffectsBrowser({ query, category, onCategoryChange }: EffectsBro
             className="mt-5 rounded-lg"
             onClick={() => {
               onCategoryChange('all');
-              window.dispatchEvent(new CustomEvent('cssfx:clear-search'));
+              window.dispatchEvent(new CustomEvent('chico-css:clear-search'));
             }}
           >
             Reset filters

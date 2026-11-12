@@ -18,8 +18,8 @@ export default function Home() {
   // Listen for "reset filters" requests coming from the browser empty state.
   useEffect(() => {
     const clear = () => setQuery('');
-    window.addEventListener('cssfx:clear-search', clear);
-    return () => window.removeEventListener('cssfx:clear-search', clear);
+    window.addEventListener('chico-css:clear-search', clear);
+    return () => window.removeEventListener('chico-css:clear-search', clear);
   }, []);
 
   const scrollToLibrary = useCallback(() => {

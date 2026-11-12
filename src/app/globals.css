@@ -200,3 +200,26 @@ html {
 .fx-scroll::-webkit-scrollbar-thumb:hover {
   background: #57576e;
 }
+
+/* ---------- Accessibility: respect prefers-reduced-motion ---------- */
+
+/* Calm the infinite/looping effect animations without touching site chrome.
+   Effect library elements are all prefixed with `efx-` (classes injected by
+   the per-card <style> tags), so scoping on [class*="efx-"] keeps toasts,
+   nav transitions and skeletons intact. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  [class*="efx-"],
+  [class*="efx-"]::before,
+  [class*="efx-"]::after,
+  [class*="efx-"] *,
+  [class*="efx-"] *::before,
+  [class*="efx-"] *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
